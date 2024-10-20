@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholar Results</title>
+    <style>
+        .article {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .citation {
+            color: #666;
+            margin: 5px 0;
+        }
+        .article-link {
+            color: blue;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    {% for article in articles %}
+    <div class="article">
+        <h3>{{ article.Title }}</h3>
+        <p class="citation">Citations: {{ article.Citation }}</p>
+        {% if article.URL != 'N/A' %}
+            <a href="{{ article.URL }}" class="article-link" target="_blank">View Article</a>
+        {% else %}
+            <p>URL not available</p>
+        {% endif %}
+    </div>
+    {% endfor %}
+</body>
+</html>
